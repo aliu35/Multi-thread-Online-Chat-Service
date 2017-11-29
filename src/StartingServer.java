@@ -6,7 +6,11 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * Starting the server side for the chat application.
+ */
 public class StartingServer {
+
     public static void main(String[] args) throws UnknownHostException, InterruptedException {
         Server server = new Server();
         RSA encryption = new RSA();

@@ -8,22 +8,53 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Chat box class that contains basic GUI for the chat application and functionality of buttons.
+ */
 public class ChatBox {
 
+    /** Client object that will do receiving and sending functionality. */
     private Client client;
+
+    /** RSA encryption. */
     private RSA encryption;
+
+    /** Username for current client user. */
     private String username;
+
+    /** Main frame of the application. */
     private JFrame frame;
+
+    /** Main panel of the application. */
     private JPanel panel;
+
+    /** South panel of the application. */
     private JPanel southPanel;
+
+    /** Main text area of the chat display. */
     private JTextArea textArea;
+
+    /** Text field for user input. */
     private JTextField textField;
+
+    /** JButton for sending message. */
     private JButton send;
+
+    /** Main menu bar of the application. */
     private JMenuBar menuBar;
+
+    /** Main menu of the menu bar. */
     private JMenu menu;
+
+    /** Menu item that connects to the server. */
     private JMenuItem connect;
+
+    /** Menu item that exits the application. */
     private JMenuItem exit;
 
+    /**
+     * Initialize menu action listener for connect and exit.
+     */
     private void menuAction() {
         connect.addActionListener(new ActionListener() {
             @Override
@@ -79,6 +110,9 @@ public class ChatBox {
         });
     }
 
+    /**
+     * Initialize menu and menu items of the application.
+     */
     private void menuInit() {
         connect = new JMenuItem("Connect");
         exit = new JMenuItem("Exit");
@@ -92,6 +126,9 @@ public class ChatBox {
         menuBar.add(menu);
     }
 
+    /**
+     * Initialize send button and added its action listener.
+     */
     private void buttonInit() {
         send = new JButton("Send");
         send.addActionListener(new ActionListener() {
@@ -99,24 +136,24 @@ public class ChatBox {
             public void actionPerformed(ActionEvent e) {
                 new Thread(() -> {
                     String userInput = textField.getText();
-                    System.out.println(userInput);
                     String message = new String(username + ": " + userInput + "\n");
-                    client.sendMessage(bytesToString(encryption.encrypt(message.getBytes())));
-
-                    byte[] ok = encryption.encrypt(message.getBytes());
-                    byte[] ok1 = encryption.decrypt(ok);
-                    String ok2 = new String(ok1);
-                    System.out.println(ok2);
+                    client.sendMessage(encryption.encrypt(message.getBytes()));
                 }).start();
+
+                textField.setText("");
             }
         });
     }
 
+    /**
+     * Initialize the main panel and south panel for the application.
+     */
     private void panelInit() {
         panel = new JPanel();
         southPanel = new JPanel();
         textArea = new JTextArea(38,58);
         textArea.setLineWrap(true);
+        textArea.setEditable(false);
         textField = new JTextField(50);
         buttonInit();
 
@@ -125,6 +162,9 @@ public class ChatBox {
         southPanel.add(send);
     }
 
+    /**
+     * Initialize the main frame for the application.
+     */
     private void frameInit() {
         frame = new JFrame("Chat Box");
         frame.setJMenuBar(menuBar);
@@ -135,15 +175,17 @@ public class ChatBox {
         frame.setVisible(true);
     }
 
+    /**
+     * Method for listening to the server and decrypt message sent from the server.
+     * The decrypted message will then be displayed onto the text area.
+     */
     private void displayMessage() {
         try {
-            String encryptedMessage = client.receive();
+            byte[] encryptedMessage = client.receive();
 
             if (encryptedMessage != null) {
-                byte[] decryptedMessage = encryption.decrypt(encryptedMessage.getBytes());
+                byte[] decryptedMessage = encryption.decrypt(encryptedMessage);
                 String decryptedString = new String(decryptedMessage);
-                System.out.println(bytesToString(decryptedString.getBytes()));
-                System.out.println(decryptedString);
                 textArea.append(decryptedString);
             }
         } catch (NullPointerException ex) {
@@ -151,27 +193,12 @@ public class ChatBox {
         }
     }
 
+    /**
+     * Initialize the chat service.
+     */
     public void chatInit() {
         menuInit();
         panelInit();
         frameInit();
-    }
-
-    private String bytesToString(byte[] encrypted)
-
-    {
-
-        String test = "";
-
-        for (byte b : encrypted)
-
-        {
-
-            test += Byte.toString(b);
-
-        }
-
-        return test;
-
     }
 }

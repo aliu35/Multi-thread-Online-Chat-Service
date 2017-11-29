@@ -5,13 +5,13 @@ package server;
  */
 public class ServerThread extends Thread {
 
-    /** Socket for Client. */
+    /** Server for the thread. */
     private Server server;
 
     /**
-     * Constructor for server thread.
+     * Constructor for ServerThread.
      *
-     * @param socket    server
+     * @param socket    server socket
      */
     public ServerThread(Server socket) {
         server = socket;

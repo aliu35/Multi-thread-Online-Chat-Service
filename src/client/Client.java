@@ -42,9 +42,9 @@ public class Client {
      *
      * @param message   message
      */
-    public void sendMessage(String message) {
+    public void sendMessage(byte[] message) {
         try {
-            out.writeUTF(message);
+            out.write(message, 0, 256);
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,13 +76,14 @@ public class Client {
      *
      * @return  message
      */
-    public String receive() {
+    public byte[] receive() {
         try {
-            String message = in.readUTF();
-            if (message != null) {
+            byte[] message = new byte[256];
+
+            if (in.read(message) != -1) {
                 return message;
             } else {
-                return null;
+                return message;
             }
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
