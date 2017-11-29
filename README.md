@@ -18,9 +18,9 @@ $ javac StartingClient.java
 $ java StartingClient
 ```
 
-After the application for the client side has launched, click the 'menu' on the menu bar and then click 'connect' to connect to the host. Enter your preferred username and the address of the host of the server. Then click connect when you are ready to enter the chat room. A message with '"Connected"' should show up once you are successfully connected with the server.
+After the application for the client side has launched, click the `menu` on the menu bar and then click `connect` to connect to the host. Enter your preferred username and the address of the host of the server. Then click connect when you are ready to enter the chat room. A message with `"Connected"` should show up once you are successfully connected with the server.
 
-Once you are connected to the server, you will be able to receive message from others in the chat room marked with their preferred username and you can be able to chat with them by typing your message down at the bottom and click 'send' button once you are ready to send the message.
+Once you are connected to the server, you will be able to receive message from others in the chat room marked with their preferred username and you can be able to chat with them by typing your message down at the bottom and click `send` button once you are ready to send the message.
 
 ### RSA Encryption
 
