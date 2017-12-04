@@ -1,10 +1,13 @@
 # Multi-thread Online Chat Service
 
-Author: Kevin Liu - aliu35, Pierce Zajac - pzajac2, Chris Janowski - cjanow3
+### Author
+  - Kevin Liu - aliu35
+  - Pierce Zajac - pzajac2
+  - Chris Janowski - cjanow3
 
 Multi-threaded online chat service for CS 342 Project 5. Application uses RSA encryption/decryption for message security. Chat service allow users to enter chat room with self assigned username to chat with all members in the chat room. Message updates in real time. Application written in Java.
 
-# How to use chat service
+### How to use chat service
 
 First, start up the server side application.
 
@@ -24,7 +27,7 @@ After the application for the client side has launched, click the `menu` on the 
 
 Once you are connected to the server, you will be able to receive message from others in the chat room marked with their preferred username and you can be able to chat with them by typing your message down at the bottom and click `send` button once you are ready to send the message.
 
-# RSA Encryption
+### RSA Encryption
 
 This application used RSA encryption/decryption for message security. Details on implementation see CS 342 [Project 5 Description][cs342].
 
