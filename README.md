@@ -29,6 +29,6 @@ Once you are connected to the server, you will be able to receive message from o
 
 ### RSA Encryption
 
-This application used RSA encryption/decryption for message security. Details on implementation see CS 342 [Project 5 Description][cs342].
+This application used RSA encryption/decryption for message security. Details on implementation see CS 342 [Project 5 Description][cs342]. For this program, we used random prime number generator for picking prime number for RSA instead of picking from 20 set prime numbers.
 
 [cs342]: <https://www.cs.uic.edu/pub/CS342/AssignmentsF17/CS_342_proj5_f17.pdf>
