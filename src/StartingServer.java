@@ -1,5 +1,5 @@
-import server.Server;
-import server.ServerThread;
+import networking.server.Server;
+import networking.server.ServerThread;
 import service.RSA;
 
 import java.net.InetAddress;
@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
+ * <h1>Server Orchestrator</h1>
  * Starting the server side for the chat application.
  */
 public class StartingServer {
@@ -21,7 +22,6 @@ public class StartingServer {
 
             if (client != null) {
                 System.out.println("Connected to a client.");
-                new Thread().sleep(4000);
                 ServerThread thread =  new ServerThread(server);
                 thread.start();
             }

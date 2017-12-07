@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 /**
+ * <h1>RSA Module</h1>
  * RSA encryption/decryption class that construct message translator.
  */
 public class RSA
@@ -18,11 +19,11 @@ public class RSA
      * RSA constructor.
      */
     public RSA() {
-        BigInteger firstPrime = BigInteger.probablePrime(256, random);
-        BigInteger secondPrime = BigInteger.probablePrime(256, random);
+        BigInteger firstPrime = BigInteger.probablePrime(4096, random);
+        BigInteger secondPrime = BigInteger.probablePrime(4096, random);
         BigInteger phi = firstPrime.subtract(BigInteger.ONE).multiply(secondPrime.subtract(BigInteger.ONE));
 
-        e = BigInteger.probablePrime(256 / 2, random);
+        e = BigInteger.probablePrime(4096 / 2, random);
         while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0) {
             e.add(BigInteger.ONE);
         }
@@ -49,6 +50,7 @@ public class RSA
      * Encrypt an message given its byte array.
      *
      * @param message   byte array of the message
+     *
      * @return  encrypted byte array
      */
     public byte[] encrypt(byte[] message) {
@@ -59,6 +61,7 @@ public class RSA
      * Dycrypt an message given its byte array.
      *
      * @param message   byte array of the encrypted message
+     *
      * @return  decrypted byte array
      */
     public byte[] decrypt(byte[] message) {

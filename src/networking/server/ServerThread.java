@@ -1,6 +1,7 @@
-package server;
+package networking.server;
 
 /**
+ * <h1>Server Thread Module</h1>
  * Class for the thread for each client.
  */
 public class ServerThread extends Thread {
