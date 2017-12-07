@@ -223,9 +223,13 @@ public class ChatBox {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                client.sendExit(username);
-                client.closeClient();
-                System.exit(0);
+                try {
+                    client.sendExit(username);
+                    client.closeClient();
+                    System.exit(0);
+                } catch (Exception ex) {
+                    System.exit(0);
+                }
             }
         });
     }
