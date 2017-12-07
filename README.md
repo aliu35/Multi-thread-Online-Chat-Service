@@ -9,6 +9,8 @@ Multi-threaded online chat service for CS 342 Project 5. Application uses RSA en
 
 ### How to use chat service
 
+Recommend using IntelliJ IDEA for IDE to run the application or Eclipse.
+
 First, start up the server side application.
 
 ```sh
