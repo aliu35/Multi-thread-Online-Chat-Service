@@ -28,6 +28,4 @@ Also, you are able to glock the `menu` on the menu bar and then click `Client Li
 
 ### RSA Encryption
 
-This application used RSA encryption/decryption for message security. Details on implementation see CS 342 [Project 5 Description][cs342]. For this program, we used random prime number generator for picking prime number for RSA instead of picking from 20 set prime numbers.
-
-[cs342]: <https://www.cs.uic.edu/pub/CS342/AssignmentsF17/CS_342_proj5_f17.pdf>
+This application used RSA encryption/decryption for message security. For this program, we used random prime number generator for picking prime number for RSA instead of picking from 20 set prime numbers.
